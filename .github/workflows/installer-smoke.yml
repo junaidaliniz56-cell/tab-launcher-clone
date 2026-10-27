@@ -1,0 +1,63 @@
+name: Installer smoke test
+on:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - name: Download current release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          gh release download v1.0.2 --repo "${{ github.repository }}" --pattern "*Setup*.exe" --dir dist --clobber
+          gh release download v1.0.2 --repo "${{ github.repository }}" --pattern "SHA256SUMS.txt" --dir dist --clobber
+          Get-ChildItem dist | Format-Table Name,Length
+          $setup = Get-ChildItem dist -Filter "*Setup*.exe" | Select-Object -First 1
+          "SETUP=$($setup.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "SETUP_SHA=$((Get-FileHash $setup.FullName -Algorithm SHA256).Hash.ToLower())" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Get-Content dist\SHA256SUMS.txt
+
+      - name: Clean install
+        shell: pwsh
+        run: |
+          $install = Join-Path $env:LOCALAPPDATA "Programs\Tab Launcher Clone"
+          Remove-Item $install -Recurse -Force -ErrorAction SilentlyContinue
+          $p = Start-Process -FilePath $env:SETUP -ArgumentList "/S" -PassThru
+          try { Wait-Process -Id $p.Id -Timeout 180 -ErrorAction Stop } catch { Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue; throw "Setup hung" }
+          Write-Host "SETUP_EXIT=$($p.ExitCode)"
+          $exe = Join-Path $install "Tab Launcher Clone.exe"
+          if (-not (Test-Path $exe)) { throw "Installed app missing" }
+          Get-Item $exe | Format-List FullName,Length
+
+      - name: Launch and extract
+        shell: pwsh
+        run: |
+          $install = Join-Path $env:LOCALAPPDATA "Programs\Tab Launcher Clone"
+          $exe = Join-Path $install "Tab Launcher Clone.exe"
+          $temp = Join-Path $env:TEMP "TabLauncherClone"
+          $log = Join-Path $env:TEMP "TabLauncherClone-error.txt"
+          Remove-Item $temp -Recurse -Force -ErrorAction SilentlyContinue
+          Remove-Item $log -Force -ErrorAction SilentlyContinue
+          $p = Start-Process -FilePath $exe -PassThru
+          Start-Sleep -Seconds 90
+          Write-Host "LAUNCHER_RUNNING=$(-not $p.HasExited)"
+          if (Test-Path $log) { Write-Host "--- ERROR LOG ---"; Get-Content $log }
+          if (Test-Path $temp) { Write-Host "--- EXTRACTED ---"; Get-ChildItem $temp -Force | Format-Table Name,Length }
+          $app = Join-Path $temp "Tab Launcher Clone.exe"
+          $ok = Test-Path $app
+          Write-Host "APP_EXTRACTED=$ok"
+          Get-Process | Where-Object { $_.Path -and $_.Path.StartsWith($temp, [System.StringComparison]::OrdinalIgnoreCase) } | ForEach-Object { Write-Host "APP_PROCESS=$($_.ProcessName)"; Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue }
+          if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue }
+          if (Test-Path $log) { throw "Launcher reported an unlock error" }
+          if (-not $ok) { throw "Launcher did not extract app" }
+
+      - name: Diagnostics
+        if: always()
+        shell: pwsh
+        run: |
+          Get-ChildItem $env:TEMP -Filter "TabLauncherClone*" -Recurse -ErrorAction SilentlyContinue | Format-Table FullName,Length
+          Get-Process | Where-Object { $_.ProcessName -like "*Tab*" -or $_.ProcessName -like "*electron*" } | Format-Table ProcessName,Id,Path
