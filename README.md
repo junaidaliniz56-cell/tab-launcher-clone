@@ -8,10 +8,11 @@ Go to the [Releases](https://github.com/junaidaliniz56-cell/tab-launcher-clone/r
 
 | Asset | Purpose |
 | --- | --- |
-| `Tab Launcher Clone Setup 1.0.0.exe` | Recommended installer |
-| `Tab Launcher Clone 1.0.0.exe` | Portable backup |
+| `Tab Launcher Clone Setup 1.0.1.exe` | Recommended installer |
+| `Tab Launcher Clone 1.0.1.exe` | Portable backup |
 | `README-TEAM.txt` | Quick install notes for team members |
 | `SHA256SUMS.txt` | Checksums for both executables |
+| `LICENSE*`, `THIRD_PARTY_NOTICES.md` | Application and third-party licenses |
 
 ## Requirements
 
@@ -31,8 +32,8 @@ Go to the [Releases](https://github.com/junaidaliniz56-cell/tab-launcher-clone/r
 Compare the SHA-256 checksum of each file with `SHA256SUMS.txt`.
 
 ```text
-5528d7bbf04a7427ad1afa7eb3a57e365f853d472b6e2b3c89d39a77a6f452fc  Tab Launcher Clone 1.0.0.exe
-d8321c26e14195980c1410d931b567e3b9248af552b6f48957b21180e7e5e6cc  Tab Launcher Clone Setup 1.0.0.exe
+ab558657f0e36dc61eebec2243607c5fb5906f0507acca295438a5564ee72c24  Tab Launcher Clone 1.0.1.exe
+3477538904fc85f9b1b9980346802f018fce3631e8c6767a6bc261e96910962d  Tab Launcher Clone Setup 1.0.1.exe
 ```
 
 ## Security
