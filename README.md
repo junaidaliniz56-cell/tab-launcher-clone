@@ -43,13 +43,27 @@ d8321c26e14195980c1410d931b567e3b9248af552b6f48957b21180e7e5e6cc  Tab Launcher C
 - Do not redistribute modified copies.
 - Report security issues privately as described in `SECURITY.md`.
 
+## Third-party licenses
+
+This application bundles Electron and Chromium.
+
+- Electron license: `LICENSE.electron.txt`
+- Chromium and third-party license texts: `LICENSES.chromium.html`
+- Summary of third-party notices: `THIRD_PARTY_NOTICES.md`
+- Zstandard (zstd): <https://github.com/facebook/zstd>
+
 ## Project files
 
 - `CHANGELOG.md` - release history
 - `CONTRIBUTING.md` - contribution and bug-report policy
 - `SECURITY.md` - security policy
-- `LICENSE` - usage terms
+- `LICENSE` - usage terms for this application
+- `THIRD_PARTY_NOTICES.md` - third-party license summary
+- `LICENSE.electron.txt` - Electron license
+- `LICENSES.chromium.html` - Chromium third-party licenses
 
 ## License
 
-Proprietary. See [LICENSE](LICENSE).
+The application is proprietary. See [LICENSE](LICENSE).
+Third-party components remain under their own licenses; see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
