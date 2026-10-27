@@ -13,8 +13,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           New-Item -ItemType Directory -Force dist | Out-Null
-          gh release download v1.0.2 --repo "${{ github.repository }}" --pattern "*Setup*.exe" --dir dist --clobber
-          gh release download v1.0.2 --repo "${{ github.repository }}" --pattern "SHA256SUMS.txt" --dir dist --clobber
+          gh release download v1.0.3 --repo "${{ github.repository }}" --pattern "*Setup*.exe" --dir dist --clobber
+          gh release download v1.0.3 --repo "${{ github.repository }}" --pattern "SHA256SUMS.txt" --dir dist --clobber
           Get-ChildItem dist | Format-Table Name,Length
           $setup = Get-ChildItem dist -Filter "*Setup*.exe" | Select-Object -First 1
           "SETUP=$($setup.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append
@@ -33,6 +33,20 @@ jobs:
           if (-not (Test-Path $exe)) { throw "Installed app missing" }
           Get-Item $exe | Format-List FullName,Length
 
+      - name: Upgrade over existing app
+        shell: pwsh
+        run: |
+          $install = Join-Path $env:LOCALAPPDATA "Programs\Tab Launcher Clone"
+          $exe = Join-Path $install "Tab Launcher Clone.exe"
+          Copy-Item $exe (Join-Path $env:TEMP "saved-launcher.exe") -Force
+          Set-Content -Path $exe -Value "old-placeholder" -NoNewline
+          $p = Start-Process -FilePath $env:SETUP -ArgumentList "/S" -PassThru
+          try { Wait-Process -Id $p.Id -Timeout 180 -ErrorAction Stop } catch { Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue; throw "Upgrade setup hung" }
+          Write-Host "UPGRADE_SETUP_EXIT=$($p.ExitCode)"
+          if (-not (Test-Path $exe)) { throw "Upgrade removed app" }
+          if ((Get-Item $exe).Length -lt 1000000) { throw "Upgrade did not replace placeholder" }
+          Get-Item $exe | Format-List FullName,Length
+
       - name: Launch and extract
         shell: pwsh
         run: |
@@ -43,7 +57,7 @@ jobs:
           Remove-Item $temp -Recurse -Force -ErrorAction SilentlyContinue
           Remove-Item $log -Force -ErrorAction SilentlyContinue
           $p = Start-Process -FilePath $exe -PassThru
-          Start-Sleep -Seconds 90
+          Start-Sleep -Seconds 180
           Write-Host "LAUNCHER_RUNNING=$(-not $p.HasExited)"
           if (Test-Path $log) { Write-Host "--- ERROR LOG ---"; Get-Content $log }
           if (Test-Path $temp) { Write-Host "--- EXTRACTED ---"; Get-ChildItem $temp -Force | Format-Table Name,Length }
