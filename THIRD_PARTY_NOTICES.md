@@ -11,14 +11,20 @@ The license texts are included in this repository:
 
 ## Zstandard (zstd)
 
-Upstream project: <https://github.com/facebook/zstd>
+License copy in this repository:
+<https://github.com/junaidaliniz56-cell/tab-launcher-clone/blob/main/LICENSE.zstd.txt>
+
+Upstream project (attribution): <https://github.com/facebook/zstd>
 
 License: BSD. The full text is in `LICENSE.zstd.txt` and
 `LICENSES.chromium.html`.
 
 ## xxHash
 
-Upstream project: <https://github.com/Cyan4973/xxHash>
+License copy in this repository:
+<https://github.com/junaidaliniz56-cell/tab-launcher-clone/blob/main/LICENSE.xxhash.txt>
+
+Upstream project (attribution): <https://github.com/Cyan4973/xxHash>
 
 License: BSD. The full text is in `LICENSE.xxhash.txt` and
 `LICENSES.chromium.html`.

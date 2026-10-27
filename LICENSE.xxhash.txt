@@ -1,4 +1,5 @@
 xxHash
+License copy: https://github.com/junaidaliniz56-cell/tab-launcher-clone/blob/main/LICENSE.xxhash.txt
 Upstream: https://github.com/Cyan4973/xxHash
 License: BSD
 
