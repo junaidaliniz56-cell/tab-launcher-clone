@@ -3,7 +3,7 @@
 ## 1.0.2 - 2026-10-27
 
 - Encrypted the app payload with AES-256.
-- Both installers now require a launch password and extract to a temporary folder at runtime.
+- The installers open without a launch password; the payload is decrypted automatically and extracted to a temporary folder at runtime.
 - Removed old unencrypted releases.
 - Updated SHA-256 checksums and team instructions.
 

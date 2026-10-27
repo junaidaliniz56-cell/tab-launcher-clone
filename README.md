@@ -25,24 +25,23 @@ Go to the [Releases](https://github.com/junaidaliniz56-cell/tab-launcher-clone/r
 1. Download the setup file.
 2. Run it and complete the installation.
 3. Open the app from the Desktop shortcut or Start Menu.
-4. Enter the launch password provided by the owner.
-5. Log in with your approved team email.
+4. Log in with your approved team email.
 
 ## Verify the download
 
 Compare the SHA-256 checksum of each file with `SHA256SUMS.txt`.
 
 ```text
-639b490ac9f73ff168c48c64615d9e66bee12bd199d0a9d53eb1ac82f71671fa  Tab Launcher Clone 1.0.2.exe
-4afab18dcaa8991d236ffb44ce2bc661db4f1722cbc093764d108bbc6ca900f3  Tab Launcher Clone Setup 1.0.2.exe
+773838ee417fd0faa6b49766bd6b7f4785b144d4e09908f6b5bb264a95aff445  Tab Launcher Clone 1.0.2.exe
+15897f0574a5d8b891291ec4db9e13ec5bd6b10dfff68e7c635262bffd149c77  Tab Launcher Clone Setup 1.0.2.exe
 ```
 
 ## Security
 
 - Only approved emails can use the app.
 - Admin credentials are not included in this repository or its releases.
-- The app payload is AES-256 encrypted.
-- Both installers prompt for a launch password and extract the app to a temporary folder only while it is running.
+- The app payload is AES-256 encrypted at rest.
+- The installers open without a launch password and extract the app to a temporary folder only while it is running.
 - Old unencrypted releases have been removed.
 - Do not redistribute modified copies.
 - Report security issues privately as described in `SECURITY.md`.
