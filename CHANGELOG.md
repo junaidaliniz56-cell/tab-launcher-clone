@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.2 - 2026-10-27
+
+- Encrypted the app payload with AES-256.
+- Both installers now require a launch password and extract to a temporary folder at runtime.
+- Removed old unencrypted releases.
+- Updated SHA-256 checksums and team instructions.
+
 ## 1.0.1 - 2026-10-27
 
 - Added standalone zstd and xxHash license files to the app package.
