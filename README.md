@@ -1,11 +1,23 @@
 # Tab Launcher Clone
 
+A locked Windows desktop launcher distributed to approved team members.
+
 ## Download
 
 Go to the [Releases](https://github.com/junaidaliniz56-cell/tab-launcher-clone/releases/latest) page.
 
-- Recommended: `Tab Launcher Clone Setup 1.0.0.exe`
-- Portable backup: `Tab Launcher Clone 1.0.0.exe`
+| Asset | Purpose |
+| --- | --- |
+| `Tab Launcher Clone Setup 1.0.0.exe` | Recommended installer |
+| `Tab Launcher Clone 1.0.0.exe` | Portable backup |
+| `README-TEAM.txt` | Quick install notes for team members |
+| `SHA256SUMS.txt` | Checksums for both executables |
+
+## Requirements
+
+- Windows 10 or Windows 11, 64-bit
+- Internet connection for Firebase access checks
+- An approved team email address
 
 ## Install
 
@@ -14,16 +26,30 @@ Go to the [Releases](https://github.com/junaidaliniz56-cell/tab-launcher-clone/r
 3. Open the app from the Desktop shortcut or Start Menu.
 4. Log in with your approved team email.
 
-## Notes
+## Verify the download
 
-- Internet is required for Firebase access checks.
-- Only approved team emails can use the app.
-- Admin credentials are not included in this repository.
-- The app source is locked and obfuscated; do not redistribute modified copies.
-
-## Checksums (SHA-256)
+Compare the SHA-256 checksum of each file with `SHA256SUMS.txt`.
 
 ```text
 5528d7bbf04a7427ad1afa7eb3a57e365f853d472b6e2b3c89d39a77a6f452fc  Tab Launcher Clone 1.0.0.exe
 d8321c26e14195980c1410d931b567e3b9248af552b6f48957b21180e7e5e6cc  Tab Launcher Clone Setup 1.0.0.exe
 ```
+
+## Security
+
+- Only approved emails can use the app.
+- Admin credentials are not included in this repository or its releases.
+- The app source is locked and obfuscated.
+- Do not redistribute modified copies.
+- Report security issues privately as described in `SECURITY.md`.
+
+## Project files
+
+- `CHANGELOG.md` - release history
+- `CONTRIBUTING.md` - contribution and bug-report policy
+- `SECURITY.md` - security policy
+- `LICENSE` - usage terms
+
+## License
+
+Proprietary. See [LICENSE](LICENSE).
