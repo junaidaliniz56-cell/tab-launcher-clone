@@ -1,5 +1,11 @@
 # Third-Party Notices
 
+## Repositories
+
+- Application: <https://github.com/junaidaliniz56-cell/tab-launcher-clone>
+- Zstandard fork: <https://github.com/junaidaliniz56-cell/zstd>
+- xxHash fork: <https://github.com/junaidaliniz56-cell/xxHash>
+
 This application bundles Electron, Chromium, and their third-party libraries.
 The license texts are included in this repository:
 

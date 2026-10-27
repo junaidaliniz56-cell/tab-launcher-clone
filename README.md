@@ -53,6 +53,8 @@ This application bundles Electron and Chromium.
 - Summary of third-party notices: `THIRD_PARTY_NOTICES.md`
 - Zstandard (zstd) license copy: [LICENSE.zstd.txt](https://github.com/junaidaliniz56-cell/tab-launcher-clone/blob/main/LICENSE.zstd.txt) (upstream: <https://github.com/facebook/zstd>)
 - xxHash license copy: [LICENSE.xxhash.txt](https://github.com/junaidaliniz56-cell/tab-launcher-clone/blob/main/LICENSE.xxhash.txt) (upstream: <https://github.com/Cyan4973/xxHash>)
+- Zstandard fork: <https://github.com/junaidaliniz56-cell/zstd>
+- xxHash fork: <https://github.com/junaidaliniz56-cell/xxHash>
 
 ## Project files
 

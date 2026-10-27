@@ -1,5 +1,6 @@
 Zstandard (zstd)
 License copy: https://github.com/junaidaliniz56-cell/tab-launcher-clone/blob/main/LICENSE.zstd.txt
+Fork: https://github.com/junaidaliniz56-cell/zstd
 Upstream: https://github.com/facebook/zstd
 License: BSD
 
