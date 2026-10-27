@@ -32,8 +32,8 @@ Go to the [Releases](https://github.com/junaidaliniz56-cell/tab-launcher-clone/r
 Compare the SHA-256 checksum of each file with `SHA256SUMS.txt`.
 
 ```text
-ab558657f0e36dc61eebec2243607c5fb5906f0507acca295438a5564ee72c24  Tab Launcher Clone 1.0.1.exe
-3477538904fc85f9b1b9980346802f018fce3631e8c6767a6bc261e96910962d  Tab Launcher Clone Setup 1.0.1.exe
+bf740150a713d64c66ddb0bfd9e459d6f00b40223d746686d0ca5334145fac2e  Tab Launcher Clone 1.0.1.exe
+986084bee78c9d022b04ad3875a1dcb74ef9004247d383a48d53d7f320910789  Tab Launcher Clone Setup 1.0.1.exe
 ```
 
 ## Security
