@@ -50,7 +50,8 @@ This application bundles Electron and Chromium.
 - Electron license: `LICENSE.electron.txt`
 - Chromium and third-party license texts: `LICENSES.chromium.html`
 - Summary of third-party notices: `THIRD_PARTY_NOTICES.md`
-- Zstandard (zstd): <https://github.com/facebook/zstd>
+- Zstandard (zstd): `LICENSE.zstd.txt` - <https://github.com/facebook/zstd>
+- xxHash: `LICENSE.xxhash.txt` - <https://github.com/Cyan4973/xxHash>
 
 ## Project files
 
@@ -61,6 +62,8 @@ This application bundles Electron and Chromium.
 - `THIRD_PARTY_NOTICES.md` - third-party license summary
 - `LICENSE.electron.txt` - Electron license
 - `LICENSES.chromium.html` - Chromium third-party licenses
+- `LICENSE.zstd.txt` - Zstandard (zstd) license
+- `LICENSE.xxhash.txt` - xxHash license
 
 ## License
 
